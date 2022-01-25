@@ -11,11 +11,11 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import tw.nolions.anigamerappuimock.R
-import tw.nolions.anigamerappuimock.model.VideoRecord
+import tw.nolions.anigamerappuimock.model.Video
 import tw.nolions.anigamerappuimock.ui.theme.AniGamerAppUIMockTheme
 
 @Composable
-fun VideoRecordItemView(index: Int, record: VideoRecord) {
+fun HorizonVideoItemView(index: Int, record: Video) {
     Row(
         modifier = Modifier
             .padding(4.dp)
@@ -29,7 +29,7 @@ fun VideoRecordItemView(index: Int, record: VideoRecord) {
 
     ) {
         Image(
-            painter = painterResource(id = R.drawable.image_400_600),
+            painter = painterResource(id = R.drawable.image_400x600),
             contentDescription = "Video Cover",
             contentScale = ContentScale.Crop,
             modifier = Modifier
@@ -43,13 +43,46 @@ fun VideoRecordItemView(index: Int, record: VideoRecord) {
     }
 }
 
+@Composable
+fun VerticalVideoItemView(index: Int, record: Video) {
+    Column(
+        modifier = Modifier
+            .padding(4.dp)
+            .width(80.dp)
+            .height(120.dp)
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.image_400x600),
+            contentDescription = "Video Cover",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .width(80.dp)
+                .height(120.dp)
+        )
+
+        Text(text = "${record.title} ${record.ep}")
+        Text(text = record.date)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun VideoRecordItemViewPreview() {
     AniGamerAppUIMockTheme {
-        VideoRecordItemView(
+        HorizonVideoItemView(
             1,
-            VideoRecord(title = "終末後宮", ep = 1, date = "01/23")
+            Video(title = "終末後宮", ep = 1, date = "01/23")
+        )
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun VerticalVideoItemViewPreview() {
+    AniGamerAppUIMockTheme {
+        VerticalVideoItemView(
+            1,
+            Video(title = "終末後宮", ep = 1, date = "01/23")
         )
     }
 }
