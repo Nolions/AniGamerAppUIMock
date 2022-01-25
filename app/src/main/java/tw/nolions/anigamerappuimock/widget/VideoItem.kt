@@ -51,7 +51,6 @@ fun VerticalVideoItemView(index: Int, record: Video) {
             .padding(4.dp)
             .width(160.dp),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment =  Alignment.CenterHorizontally
     ) {
         Image(
             painter = painterResource(id = R.drawable.image_400x600),
@@ -62,8 +61,14 @@ fun VerticalVideoItemView(index: Int, record: Video) {
                 .height(240.dp)
         )
 
-        Text(text = "${record.title} ${record.ep}")
-        Text(text = record.date)
+
+        Column(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            Text(text = "${record.title} ${record.ep}", )
+            Text(text = record.date)
+        }
+
     }
 }
 
