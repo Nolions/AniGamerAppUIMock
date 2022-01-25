@@ -24,4 +24,4 @@
 
 ***My***
 
-![My](./docs/assets/My.png)
+![My](./docs/assets/my.png)
