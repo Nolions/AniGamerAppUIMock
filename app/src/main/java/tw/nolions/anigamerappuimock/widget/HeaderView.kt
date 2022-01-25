@@ -8,7 +8,7 @@ import androidx.compose.ui.unit.sp
 import tw.nolions.anigamerappuimock.ui.theme.AniGamerAppUIMockTheme
 
 @Composable
-fun PageHeader(title: String) {
+fun PageHeaderView(title: String) {
     Text(
         text = title,
         fontWeight = FontWeight.Bold,
@@ -20,6 +20,6 @@ fun PageHeader(title: String) {
 @Composable
 fun PageHeaderPreview() {
     AniGamerAppUIMockTheme {
-        PageHeader("紀錄")
+        PageHeaderView("紀錄")
     }
 }
