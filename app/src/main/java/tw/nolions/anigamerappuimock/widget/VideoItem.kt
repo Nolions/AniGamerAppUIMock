@@ -5,7 +5,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -14,6 +13,28 @@ import androidx.compose.ui.unit.dp
 import tw.nolions.anigamerappuimock.R
 import tw.nolions.anigamerappuimock.model.Video
 import tw.nolions.anigamerappuimock.ui.theme.AniGamerAppUIMockTheme
+
+@Composable
+fun videoCoverItemView(index: Int, record: Video) {
+    Column(
+        modifier = Modifier
+            .padding(4.dp)
+            .width(180.dp),
+        verticalArrangement = Arrangement.Center,
+    ) {
+        Image(
+            painter = painterResource(id = R.drawable.image_600x400),
+            contentDescription = "Video Cover",
+            contentScale = ContentScale.Crop,
+            modifier = Modifier
+                .width(180.dp)
+                .height(120.dp)
+        )
+
+        Text(text = "${record.title} ${record.ep}")
+        Text(text = record.date)
+    }
+}
 
 @Composable
 fun HorizonVideoItemView(index: Int, record: Video) {
@@ -65,10 +86,22 @@ fun VerticalVideoItemView(index: Int, record: Video) {
         Column(
             modifier = Modifier.fillMaxWidth()
         ) {
-            Text(text = "${record.title} ${record.ep}", )
+            Text(text = "${record.title} ${record.ep}")
             Text(text = record.date)
         }
 
+    }
+}
+
+
+@Preview(showBackground = true)
+@Composable
+fun VideoCoverItemViewPreview() {
+    AniGamerAppUIMockTheme {
+        videoCoverItemView(
+            1,
+            Video(title = "終末後宮", ep = 1, date = "01/23")
+        )
     }
 }
 
