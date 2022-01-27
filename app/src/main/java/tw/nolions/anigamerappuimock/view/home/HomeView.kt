@@ -18,7 +18,7 @@ import tw.nolions.anigamerappuimock.ui.theme.AniGamerAppUIMockTheme
 @ExperimentalFoundationApi
 @Composable
 fun HomeView() {
-    var tabIndex by remember { mutableStateOf(1) }
+    var tabIndex by remember { mutableStateOf(0) }
     val tabTitles = listOf("全部", "推薦", "分類")
 
     Column(
@@ -36,10 +36,10 @@ fun HomeView() {
                     text = { Text(text = title) })
             }
         }
-        when (tabIndex) { // 6.
-            0 -> Text("Hello content")
+        when (tabIndex) {
+            0 -> allView()
             1 -> recommendView()
-            2 -> Text("World content")
+            2 -> classificationView()
         }
     }
 }

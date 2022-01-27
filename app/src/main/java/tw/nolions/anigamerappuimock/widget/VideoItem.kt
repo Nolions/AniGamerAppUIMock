@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.selection.selectable
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
@@ -68,23 +69,21 @@ fun HorizonVideoItemView(index: Int, record: Video) {
 @Composable
 fun VerticalVideoItemView(index: Int, record: Video) {
     Column(
-        modifier = Modifier
-            .padding(4.dp)
-            .width(160.dp),
+        modifier = Modifier.width(180.dp),
         verticalArrangement = Arrangement.Center,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
             painter = painterResource(id = R.drawable.image_400x600),
             contentDescription = "Video Cover",
             contentScale = ContentScale.Crop,
             modifier = Modifier
-                .width(160.dp)
+                .width(180.dp)
                 .height(240.dp)
         )
 
-
         Column(
-            modifier = Modifier.fillMaxWidth()
+            modifier = Modifier.width(180.dp)
         ) {
             Text(text = "${record.title} ${record.ep}")
             Text(text = record.date)

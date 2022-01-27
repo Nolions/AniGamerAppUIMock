@@ -20,7 +20,7 @@ import tw.nolions.anigamerappuimock.ui.theme.AniGamerAppUIMockTheme
 
 @ExperimentalFoundationApi
 @Composable
-fun ClassificationView() {
+fun classificationView() {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
@@ -71,6 +71,6 @@ fun classificationList() = listOf(
 @Composable
 fun ClassificationViewPreview() {
     AniGamerAppUIMockTheme {
-        ClassificationView()
+        classificationView()
     }
 }
