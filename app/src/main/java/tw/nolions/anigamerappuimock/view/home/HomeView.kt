@@ -1,5 +1,6 @@
 package tw.nolions.anigamerappuimock.view.home
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.width
@@ -14,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import tw.nolions.anigamerappuimock.ui.theme.AniGamerAppUIMockTheme
 
+@ExperimentalFoundationApi
 @Composable
 fun HomeView() {
     var tabIndex by remember { mutableStateOf(1) }
@@ -36,12 +38,13 @@ fun HomeView() {
         }
         when (tabIndex) { // 6.
             0 -> Text("Hello content")
-            1 -> Text("There content")
+            1 -> recommendView()
             2 -> Text("World content")
         }
     }
 }
 
+@ExperimentalFoundationApi
 @Preview(showBackground = true)
 @Composable
 fun HomeViewPreview() {

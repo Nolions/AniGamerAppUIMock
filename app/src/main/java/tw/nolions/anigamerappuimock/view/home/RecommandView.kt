@@ -43,8 +43,6 @@ fun recommendView() {
     }
 }
 
-var seasonVideos: ArrayList<Video> = ArrayList()
-
 private fun videoDataBySeason(): ArrayList<Video> {
     val video1 = Video(title = "終末後宮", ep = 1, date = "01/23")
     val video2 = Video(title = "一拳超人", ep = 1, date = "01/23")
