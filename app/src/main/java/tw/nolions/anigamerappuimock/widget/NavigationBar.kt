@@ -1,5 +1,7 @@
 package tw.nolions.anigamerappuimock.widget
 
+import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.absolutePadding
@@ -25,86 +27,46 @@ enum class Screen {
     HOME, SEARCH, FAVORITE, RECORD, MY
 }
 
+data class NavigationItem(val title: String, val iconResId: Int, val screen: Screen)
+
+fun navigationItemList() = listOf(
+    NavigationItem(title = "首頁", iconResId = R.drawable.ic_home, screen = Screen.HOME),
+    NavigationItem(title = "搜尋", iconResId = R.drawable.ic_search, screen = Screen.SEARCH),
+    NavigationItem(title = "收藏", iconResId = R.drawable.ic_favorite, screen = Screen.FAVORITE),
+    NavigationItem(title = "紀錄", iconResId = R.drawable.ic_record, screen = Screen.RECORD),
+    NavigationItem(title = "我的", iconResId = R.drawable.ic_my, screen = Screen.MY),
+)
+
 /**
  * App Main Navigation Bar Composable method
  */
 @Composable
 fun NavigationBar(state: MutableState<Screen>) {
     BottomAppBar(
-        backgroundColor = Color(0xFF1976D2),
-//        cutoutShape = RoundedCornerShape(10.dp),
+        backgroundColor = Color.White,
+        modifier = Modifier.border(
+            BorderStroke(width = 1.dp, color = Color.Black)
+        )
     ) {
-        Row(modifier = Modifier.weight(5f)) {
-            val modifier = Modifier
-                .weight(1f)
-                .absolutePadding(left = 8.dp, right = 8.dp)
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-            ) {
-                NavigationItem(
-                    painter = painterResource(R.drawable.ic_home),
-                    text = "首頁",
-                    clickEnable = state.value == Screen.HOME,
-                    click = {
-                        state.value = Screen.HOME
-                    }
-                )
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-            ) {
-                NavigationItem(
-                    painter = painterResource(R.drawable.ic_search),
-                    text = "搜尋",
-                    clickEnable = state.value == Screen.SEARCH,
-                    click = {
-                        state.value = Screen.SEARCH
-                    }
-                )
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-            ) {
-                NavigationItem(
-                    painter = painterResource(R.drawable.ic_favorite),
-                    text = "收藏",
-                    clickEnable = state.value == Screen.FAVORITE,
-                    click = {
-                        state.value = Screen.FAVORITE
-                    })
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-            ) {
-                NavigationItem(
-                    painter = painterResource(R.drawable.ic_record),
-                    text = "紀錄",
-                    clickEnable = state.value == Screen.RECORD,
-                    click = {
-                        state.value = Screen.RECORD
-                    }
-
-                )
-            }
-
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                modifier = modifier
-            ) {
-                NavigationItem(
-                    painter = painterResource(R.drawable.ic_my),
-                    text = "我的",
-                    clickEnable = state.value == Screen.MY,
-                    click = {
-                        state.value = Screen.MY
-                    })
+        Row(
+            modifier = Modifier.weight(5f)
+        ) {
+            navigationItemList().forEach {
+                Column(
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .weight(1f)
+                        .absolutePadding(left = 8.dp, right = 8.dp)
+                ) {
+                    NavigationItem(
+                        painter = painterResource(it.iconResId),
+                        text = it.title,
+                        clickEnable = state.value == it.screen,
+                        click = {
+                            state.value = it.screen
+                        }
+                    )
+                }
             }
         }
     }
@@ -116,9 +78,9 @@ fun NavigationItem(clickEnable: Boolean, painter: Painter, text: String, click: 
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Icon(
                 painter = painter, contentDescription = null,
-                tint = Color.White
+                tint = Color.Black
             )
-            Text(text = text, color = Color.White)
+            Text(text = text, color = Color.Black)
         }
     }
 }
